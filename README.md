@@ -1,0 +1,1 @@
+# Minimal Docker Config: Apache, MySQL, PHP

@@ -1,0 +1,21 @@
+version: '3.7'
+services:
+  db:
+    build: ./mysql
+    ports:
+      - 3307:3306
+    command: ["--default-authentication-plugin=mysql_native_password"]
+    environment:
+      MYSQL_ROOT_PASSWORD: docker
+      MYSQL_DATABASE: docker
+      MYSQL_USER: docker
+      MYSQL_PASSWORD: docker
+  http:
+    build: ./http
+    ports:
+      - 81:80
+      - 444:443
+    links:
+      - db
+    volumes:
+      - ./../:/var/www/html:cached
